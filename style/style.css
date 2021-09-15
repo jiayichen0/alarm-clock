@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'digital-7';
+    src: url(./digital_7/digital-7.ttf);
+}
+
+body {
+    font-family: 'digital-7';
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.clock {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.clock .date p {
+    font-size: 24px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.clock .time {
+    position: relative;
+    font-size: 96px;
+}
+.clock .time p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
