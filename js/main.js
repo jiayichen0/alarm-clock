@@ -1,11 +1,12 @@
 
-const Months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august']
+const months = [    'january', 'february', 'march', 'april', 'may', 'june', 'july', 
+                    'august', 'september', 'october', 'november', 'december'];
 var alarmTime = document.getElementById('alarm-time');
 // var setAlarm = document.getElementById('set-alarm');
 
 function updateTime() {
     var date = new Date();
-    var month = date.getMonth() + 1;
+    var month = date.getMonth();
     var day = date.getDate();
     var year = date.getFullYear();
 
@@ -25,7 +26,7 @@ function updateTime() {
     minute = (minute < 10 ? '0' + minute : minute);
     second = (second < 10 ? '0' + second : second);
 
-    document.getElementById('date').innerHTML = month + '/' + day + '/' + year;
+    document.getElementById('date').innerHTML = months[month] + ' ' + day + ', ' + year;
     document.getElementById('time').innerHTML = hour + ':' + minute + ':' + second + ' ' + am_pm;
     
     // document.getElementById('set-alarm').innerHTML = setAlarm.innerHTML;
