@@ -1,11 +1,10 @@
 
 const Months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august']
 var alarmTime = document.getElementById('alarm-time');
-var setAlarm = document.getElementById('set-alarm');
+// var setAlarm = document.getElementById('set-alarm');
 
 function updateTime() {
     var date = new Date();
-
     var month = date.getMonth() + 1;
     var day = date.getDate();
     var year = date.getFullYear();
@@ -29,12 +28,37 @@ function updateTime() {
     document.getElementById('date').innerHTML = month + '/' + day + '/' + year;
     document.getElementById('time').innerHTML = hour + ':' + minute + ':' + second + ' ' + am_pm;
     
-    document.getElementById('set-alarm').innerHTML = setAlarm;
+    // document.getElementById('set-alarm').innerHTML = setAlarm.innerHTML;
 };
 
-alarmTime.addEventListener("input", function() {
-    setAlarm.innerHTML = alarmTime.value;
-});
+function setAlarm() {
+    var currentTime = new Date();
+    var hour = currentTime.getHours();
+    var minute = currentTime.getMinutes();
+    var second = currentTime.getSeconds();
+    var millisecond = currentTime.getMilliseconds();
+    var msCurrent = convertToMS(hour, minute);
+
+    var alarmHour = Number(alarmTime.value.split(':')[0]);
+    var alarmMinute = Number(alarmTime.value.split(':')[1]);
+    var msAlarm = convertToMS(alarmHour, alarmMinute);
+
+    var timeDiff = (msAlarm - msCurrent) - ((second * 1000) + millisecond);
+
+    if (timeDiff < 0) {
+        timeDiff += 86400000;
+    }
+
+    document.getElementById('set-alarm').innerHTML = "Alarm Set!";
+    setTimeout(function() { alert("Time's up!"); }, timeDiff);
+    
+}
+
+function convertToMS(hours, minutes) {
+    return (hours * 60 * 60 * 1000) + (minutes * 60 * 1000);
+}
+
+alarmTime.addEventListener("input", setAlarm);
 
 updateTime();
 setInterval(updateTime, 1000);
