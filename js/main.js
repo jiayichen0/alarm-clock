@@ -19,10 +19,9 @@ function updateTime() {
         hour = '12';
     } else if (hour > 12) {
         hour = '0' + (hour - 12);
-    } else if (hour < 10) {
-        hour = '0' + hour;
-    }
+    } 
 
+    hour = (hour < 10 ? '0' + hour : hour);
     minute = (minute < 10 ? '0' + minute : minute);
     second = (second < 10 ? '0' + second : second);
 
