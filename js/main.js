@@ -19,7 +19,7 @@ function updateTime() {
         hour = '12';
     } else if (hour > 12) {
         hour = '0' + (hour - 12);
-    } else {
+    } else if (hour < 10) {
         hour = '0' + hour;
     }
 
